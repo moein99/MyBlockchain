@@ -1,7 +1,7 @@
 const hexToBinary = require("hex-to-binary");
 const Block = require("./block");
 const { GENESIS_DATA, MINE_RATE } = require("../config");
-const cryphtoHash = require("../util/crypto-hash");
+const { cryptoHash } = require("../util");
 
 describe("Block", () => {
     const timestamp = 2000;
@@ -57,7 +57,7 @@ describe("Block", () => {
         });
 
         it("creates a SHA-256 hash based on the proper i nputs", () => {
-            expect(minedBlock.hash).toEqual(cryphtoHash(
+            expect(minedBlock.hash).toEqual(cryptoHash(
                 minedBlock.timestamp, 
                 minedBlock.nonce, 
                 minedBlock.difficulty, 
